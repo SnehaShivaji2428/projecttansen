@@ -1,0 +1,32 @@
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <h3 class="mt-2">Invitee Details</h3>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <div id="det">
+                <%- include ("./messages") %>
+            </div>
+            <button onclick="backe()" class="btn btn-primary btn-block">Go Back</button>
+        </div>
+    </div>
+</div>
+<script>
+    function backe() {
+        window.history.back()
+    }
+</script>
+<script>
+    var allTheData = document.querySelector("#det").textContent.trim().split(',')
+    var separateList = '<div>'
+    allTheData.forEach(function(value) {
+        separateList += '<p class="lead mb-3">' + value + '</p>'; 
+    });
+    separateList += '</div>';
+    document.querySelector("#det").innerHTML = separateList;
+</script>
+

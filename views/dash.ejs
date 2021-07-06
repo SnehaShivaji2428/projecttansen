@@ -1,0 +1,41 @@
+<%- include ("./nav") %>
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <p class="lead mb-3">Welcome <%= name %></p>
+            <div>
+                <p class="lead mb-3">Balance: ₹ <%= balance %></p>
+                <p class="lead mb-3">ID: <%= id %></p>
+            </div>
+            <a href="/recharge" class="btn btn-primary btn-block">Recharge</a>
+            <a href="/withdraw" class="btn btn-secondary btn-block mb-2">Withdraw</a>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <a href="/dice/:id" class="btn btn-secondary btn-block mb-2">
+                <h1 class="mt-3">
+                    <img src="/assets/card.png" style="height: 100px; width: 100px;">
+                </h1>
+            </a>
+            <a href="/card/:id" class="btn btn-secondary btn-block mb-2">
+                <h1 class="mt-3">
+                    <img src="/assets/card.png" style="height: 100px; width: 100px;">
+                </h1>
+            </a>  
+            <a href="/dice2/:id" class="btn btn-secondary btn-block mb-2">
+                <h1 class="mt-3">
+                    <img src="/assets/card.png" style="height: 100px; width: 100px;">
+                </h1>
+            </a>
+            <a href="/paitry/:id" class="btn btn-secondary btn-block mb-2">
+                <h1 class="mt-3">
+                    <img src="/assets/card.png" style="height: 100px; width: 100px;">
+                </h1>
+            </a>
+        </div>
+    </div>
+</div>
+

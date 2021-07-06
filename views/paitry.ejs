@@ -1,0 +1,194 @@
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <h3 class="mt-2">Fast Parity</h3>
+        </div>
+    </div>
+</div>
+
+<div id="rules" class="row mt-5" style="display: none;">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <div style="display: flex;justify-content: center;">
+                <h4 class="mt-2">Instructions</h4>
+                <h4 class="mt-2" style="padding-left: 15px; padding-right: 15px;">
+                    <button class="btn btn-secondary btn-block" onclick="rulix()">Close</button>
+                </h4>
+            </div>
+            <hr color="#fff">
+            This is a colour guessing game in which user is meant to guess the colour of the result. User has to choose between Green, Blue or Red.      
+            <hr color="#fff">                    
+            <ul style="text-align: left;">
+                <li>Click START.</li>
+                <li>
+                    Enter amount for playing the game.
+                    <ul>
+                        <li>You can play a minimum of ₹10.</li>
+                        <li>You cannot play more than you balance.</li>
+                        <li>5% from you amount is deducted as game fee if you play more than ₹60.</li>
+                        <li>₹3 is deducted as game fee if you play less than ₹60.</li>
+                    </ul>
+                </li>
+                <li>
+                    Choose your guess (Green, Blue, Red).
+                    <ul>
+                        <li>If you choose Green and the colour shows up is green with the number combination of either 1 or 3 or 7 or 9 then you will get reward.</li>
+                        <li>If you choose Red and the colour shows up is red with the number combination of either 2 or 4 or 6 or 8 then you will get reward.</li>
+                        <li>If you choose Blue and the colour shows up is blue with the number combination of either 0 or 5 then you will get a jackpot reward of double the amount you played for.</li>
+                        <li>If your choosen colour matches with the result colour but the number combination doesn't matches then you will neither win nor lose, only the game fee will be deducted.</li>
+                        <li>If your choosen colour doesn't matches with the result colour then you will lose the amount you played.</li>
+                    </ul>
+                </li>
+                <li>Click PLAY.</li>
+                <li>You have to wait for 30 seconds for the result.</li>
+                <li>WARNING- Don't go back before the results are shown otherwise you won't get your reward if you win.</li>
+            </ul>
+            <hr color="#fff">
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+
+            <div style="display: flex;justify-content: center;">
+                <h4 id="cd" class="mt-2" style="padding-left: 15px; padding-right: 15px;border: 2px solid #fff;border-radius: 5px;">00:00</h4>
+                <h4 class="mt-2" style="padding-left: 15px; padding-right: 15px;">
+                    <button class="btn btn-secondary btn-block" onclick="rulie()">Instructions</button>
+                </h4>
+            </div>
+
+            <h1 id="result" class="mt-4">Result</h1>
+
+            <h1 class="mt-4">
+                <button class="btn" id="res" style="height: 60px; width: 60px;border-radius: 50%; text-align: center; background: #fff; border: 1px solid #fff;"><strong><p id="pe" style="font-size: 25px;"></p></strong></button>
+            </h1>
+
+            <div id="gayab">
+                <label for=""></label>
+                <button onclick="show()" class="btn btn-primary btn-block">START</button>
+            </div>
+                
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <div id="hide" style="display: none;">
+                <form id="ismForm" action="/auth/paitry/<%= id %>" method="POST">
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" name="amount" class="form-control" placeholder="Enter Amount"
+                        value="<%= typeof amount != 'undefined' ? amount : '' %>" onkeyup="if(this.value.length < 0 || this.value<10) document.getElementById('start').disabled = true; else document.getElementById('start').disabled = false; document.getElementById('start').style.background = '#00bc8c';" required/>
+                    </div>
+                    <input type="hidden" id="wow" name="wow" value="">
+                    <input type="hidden" id="numi" name="numi" value="">
+                    <input type="hidden" id="choice" name="choice" value="">
+                    <input type="hidden" id="today" name="today" value="">
+                </form>
+                <div class="btn-group">
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <button onclick="burr1()" class="btn btn-success btn-block">Green</button>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <button onclick="burr2()" class="btn btn-info btn-block">Blue</button>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <button onclick="burr3()" class="btn btn-danger btn-block">Red</button>
+                    </div>
+                </div>
+                <div>
+                    <label for=""></label>
+                    <button id="start" class="btn btn-primary btn-block" disabled>PLAY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function rulie() {
+        if (document.getElementById("rules").style.display == "none") {
+            document.getElementById("rules").style.display = "block";
+        } else {
+            document.getElementById("rules").style.display = "none";
+        }  
+    }
+
+    function rulix() {
+        document.getElementById("rules").style.display = "none";
+    }
+</script>
+
+<script>
+    function burr1() {
+        const burrr1 = document.getElementById("choice");
+        burrr1.value=1
+    }
+    function burr2() {
+        const burrr2 = document.getElementById("choice");
+        burrr2.value=2
+    }
+    function burr3() {
+        const burrr3 = document.getElementById("choice");
+        burrr3.value=3
+    }
+</script>
+<script>
+    function show() {
+        const hd = document.getElementById("hide");
+        hd.style.display = "block";
+    }
+</script>
+<script>
+    function formSubmit(){
+        document.getElementById("ismForm").submit();
+    }
+
+    document.getElementById("start").onclick = function() {
+        const hd = document.getElementById("hide");
+        hd.style.display = "none";
+        
+        const today = new Date();
+        document.getElementById("today").value = today;
+
+        const hr = document.getElementById("gayab");
+        hr.style.display = "none";
+
+        var time = 30;
+        var x=setInterval( function () {
+            time = time<10 ? '0' + time:time;
+            document.getElementById("cd").innerHTML=`00:${time}`;
+            time--;
+            if(time<0) {
+                clearInterval(x);  
+                var items = [ "rgb(43, 228, 43)", "rgb(31, 149, 218)", "rgb(238, 42, 42)"]
+                var item = items[Math.floor(Math.random()*items.length)];
+                var num = Math.floor(Math.random() * 10);
+                document.getElementById("res").style.background = item;
+                document.getElementById("pe").innerHTML = num;
+                if (item=="rgb(43, 228, 43)") {
+                    document.getElementById("result").innerHTML = "GREEN WON";
+                    document.getElementById("wow").value=1;
+                } else if(item=="rgb(31, 149, 218)") {
+                    document.getElementById("result").innerHTML = "BLUE WON";
+                    document.getElementById("wow").value=2;
+                } else if(item=="rgb(238, 42, 42)") {
+                    document.getElementById("result").innerHTML = "RED WON";
+                    document.getElementById("wow").value=3;
+                }
+                if (num==1 || num==3 || num==7 || num==9) {
+                    document.getElementById("numi").value=1;
+                } else if (num==2 || num==4 || num==6 || num==8) {
+                    document.getElementById("numi").value=3;
+                } else if (num==0 || num==5 ) {
+                    document.getElementById("numi").value=2;
+                }
+            }
+        }, 1000);
+        setTimeout(formSubmit, 32000); 
+    }
+</script>

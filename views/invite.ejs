@@ -1,0 +1,52 @@
+<%- include ("./nav") %>
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <div>
+                <p class="lead mb-3">Balance: ₹ <%= balance %></p>
+                <p class="lead mb-3">ID: <%= id %></p>
+            </div>
+            <a href="/withdraw" class="btn btn-secondary btn-block mb-2">Withdraw</a>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <p class="lead mb-3">Total Invitee: <%= refcount %></p>
+            <p class="lead mb-3">Invite Rewards: <%= refbal %></p>        
+            <form action="/auth/reflink" method="POST">
+                <button type="submit" id="buttu" class="btn btn-primary btn-block">Your Referral Link</button>           
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <h3 class="mt-2">Invitee Details</h3>
+        </div>
+    </div>
+</div>
+<div id="ref">
+    <%= refto %>
+</div>
+
+<script>
+    var allTheData = document.querySelector("#ref").textContent.trim().split(',')
+    var separateList = '<div>'
+    allTheData.forEach(function(value) {
+        separateList += '<div class="row mt-5"><div class="col-md-12 m-auto"><div class="card card-body text-center">'+ '<p class="lead mb-3">' +value + '</p>' + '<form method="POST" action="/auth/dynamic/'+value+'">'+ '<input type="hidden" name="wallah" value='+value+'>' +'<button class="btn btn-primary btn-block">View Details</button>'+'</form>'+'</div>'+'</div>'+'</div>';
+    });
+    separateList += '</div>';
+    document.querySelector("#ref").innerHTML = separateList;
+</script>
+<script>
+    const code = document.getElementById("code");
+    const buttu = document.getElementById("buttu");
+
+    buttu.onclick = function() {
+        code.select();
+        document.execCommand("Copy");
+    }
+</script>

@@ -1,0 +1,193 @@
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <h3 class="mt-2">Left Or Right</h3>
+        </div>
+    </div>
+</div>
+
+<div id="rules" class="row mt-5" style="display: none;">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <div style="display: flex;justify-content: center;">
+                <h4 class="mt-2">Instructions</h4>
+                <h4 class="mt-2" style="padding-left: 15px; padding-right: 15px;">
+                    <button class="btn btn-secondary btn-block" onclick="rulix()">Close</button>
+                </h4>
+            </div>
+            <hr color="#fff">
+            This is a dice game in which user is meant to guess which dice either the left or the right one will give a greater outcome or both will be same(DRAW). User has to choose between Left, Right or Draw.      
+            <hr color="#fff">                    
+            <ul style="text-align: left;">
+                <li>Click START.</li>
+                <li>
+                    Enter amount for playing the game.
+                    <ul>
+                        <li>You can play a minimum of ₹10.</li>
+                        <li>You cannot play more than you balance.</li>
+                        <li>5% from you amount is deducted as game fee if you play more than ₹60.</li>
+                        <li>₹3 is deducted as game fee if you play less than ₹60.</li>
+                    </ul>
+                </li>
+                <li>
+                    Choose your guess (Left, Right, Draw).
+                    <ul>
+                        <li>If you choose Left and the left dice has a greater outcome than the right one then you will get reward.</li>
+                        <li>If you choose Right and the right dice has a greater outcome than the left one then you will get reward.</li>
+                        <li>If you choose Draw and the both the dice has same outcome then you will get reward.</li>
+                        <li>If the above possibilities is not true for you then you will lose the amount you played.</li>
+                    </ul>
+                </li>
+                <li>Click PLAY.</li>
+                <li>You have to wait for 30 seconds for the result.</li>
+                <li>WARNING- Don't go back before the results are shown otherwise you won't get your reward if you win.</li>
+            </ul>
+            <hr color="#fff">
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <div style="display: flex;justify-content: center;">
+                <h4 id="cd" class="mt-2" style="padding-left: 15px; padding-right: 15px;border: 2px solid #fff;border-radius: 5px;">00:00</h4>
+                <h4 class="mt-2" style="padding-left: 15px; padding-right: 15px;">
+                    <button class="btn btn-secondary btn-block" onclick="rulie()">Instructions</button>
+                </h4>
+            </div>
+
+            <h2 id="result" class="mt-3">Roll the Dice</h2>
+
+            <h1 class="mt-4" style="padding-left: 15px; padding-right: 15px;">
+                <img src="/assets/asset/dice1.png" style="width: 80px;height: 80px;">
+                <img src="/assets/asset/dice1.png" style="width: 80px;height: 80px;">
+            </h1>
+
+            <div style="display: flex;justify-content: center;">
+                <h3 class="mt-2" style="padding-left: 15px; padding-right: 15px;">Left</h3>
+                <h3 class="mt-2" style="padding-left: 15px; padding-right: 15px;">Right</h3>
+            </div>
+                
+            <div id="gayab">
+                <button onclick="show()" class="btn btn-primary btn-block">START</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <div id="hide" style="display: none;">
+                <form id="ismForm" action="/auth/dice/<%= id %>" method="POST">
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" name="amount" class="form-control" placeholder="Enter Amount"
+                        value="<%= typeof amount != 'undefined' ? amount : '' %>" onkeyup="if(this.value.length < 0 || this.value<10) document.getElementById('start').disabled = true; else document.getElementById('start').disabled = false; document.getElementById('start').style.background = '#00bc8c';" required/>
+                    </div>
+                    <input type="hidden" id="wow" name="wow" value="">
+                    <input type="hidden" id="choice" name="choice" value="">
+                    <input type="hidden" id="today" name="today" value="">
+                </form>
+                <div class="btn-group">
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <button onclick="burr1()" class="btn btn-secondary btn-block">Left</button>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <button onclick="burr2()" class="btn btn-secondary btn-block">Right</button>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <button onclick="burr3()" class="btn btn-secondary btn-block">Draw</button>
+                    </div>
+                </div>
+                <div>
+                    <label for=""></label>
+                    <button id="start" class="btn btn-primary btn-block" disabled>PLAY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function rulie() {
+        if (document.getElementById("rules").style.display == "none") {
+            document.getElementById("rules").style.display = "block";
+        } else {
+            document.getElementById("rules").style.display = "none";
+        }  
+    }
+
+    function rulix() {
+        document.getElementById("rules").style.display = "none";
+    }
+</script>
+
+<script>
+    function burr1() {
+        const burrr1 = document.getElementById("choice");
+        burrr1.value=1
+    }
+    function burr2() {
+        const burrr2 = document.getElementById("choice");
+        burrr2.value=2
+    }
+    function burr3() {
+        const burrr3 = document.getElementById("choice");
+        burrr3.value=3
+    }
+</script>
+<script>
+    function show() {
+        const hd = document.getElementById("hide");
+        hd.style.display = "block";
+    }
+</script>
+<script>
+    function formSubmit(){
+        document.getElementById("ismForm").submit();
+    }
+
+    document.getElementById("start").onclick = function() {
+        const hd = document.getElementById("hide");
+        hd.style.display = "none";
+        
+        const today = new Date();
+        document.getElementById("today").value = today;
+
+        const hr = document.getElementById("gayab");
+        hr.style.display = "none";
+
+        var time = 30;
+        var x=setInterval( function () {
+            time = time<10 ? '0' + time:time;
+            document.getElementById("cd").innerHTML=`00:${time}`;
+            time--;
+            document.querySelector("#result").innerHTML = "Rolling...";
+            if(time<0) {
+                clearInterval(x);  
+                const frn = Math.floor(Math.random()*6)+1;
+                const fdi = "/assets/asset/dice" + frn + ".png";
+                const srn = Math.floor(Math.random()*6)+1;
+                const sdi = "/assets/asset/dice" + srn + ".png";
+                document.querySelectorAll("img")[0].setAttribute('src', fdi);
+                document.querySelectorAll("img")[1].setAttribute('src', sdi);
+                if (frn>srn) {
+                    document.querySelector("#result").innerHTML = "Left winner";
+                    const bla = document.getElementById("wow");
+                    bla.value=1
+                } else if (srn>frn) {
+                    document.querySelector("#result").innerHTML = "Right winner";
+                    const bla = document.getElementById("wow");
+                    bla.value=2
+                } else {
+                    document.querySelector("#result").innerHTML = "Draw";
+                    const bla = document.getElementById("wow");
+                    bla.value=3
+                }
+            }
+        }, 1000);
+        setTimeout(formSubmit, 32000); 
+    }
+</script>

@@ -1,0 +1,245 @@
+<body onload="bla()">
+    <div class="row mt-5">
+        <div class="col-md-12 m-auto">
+            <div class="card card-body text-center">
+                <h3 class="mt-2">Andar Bahar</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="rules" class="row mt-5" style="display: none;">
+        <div class="col-md-12 m-auto">
+            <div class="card card-body text-center">
+                <div style="display: flex;justify-content: center;">
+                    <h4 class="mt-2">Instructions</h4>
+                    <h4 class="mt-2" style="padding-left: 15px; padding-right: 15px;">
+                        <button class="btn btn-secondary btn-block" onclick="rulix()">Close</button>
+                    </h4>
+                </div>
+                <hr color="#fff">
+                This is a card game in which user is meant to guess which side left or right would first display the same card displayed on the top or None of them (TIE). User has to choose between Left, Tie or Right.      
+                <hr color="#fff">                    
+                <ul style="text-align: left;">
+                    <li>Click START.</li>
+                    <li>
+                        Enter amount for playing the game.
+                        <ul>
+                            <li>You can play a minimum of ₹10.</li>
+                            <li>You cannot play more than you balance.</li>
+                            <li>5% from you amount is deducted as game fee if you play more than ₹60.</li>
+                            <li>₹3 is deducted as game fee if you play less than ₹60.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Choose your guess (Left, Tie, Right).
+                        <ul>
+                            <li>If you choose Left and the left side first displays the same card shown on the top then you will get reward.</li>
+                            <li>If you choose Right and the right side first displays the same card shown on the top then you will get reward.</li>
+                            <li>If you choose Tie and the none of the side displays the same card shown on the top then you will get reward.</li>
+                            <li>If the above possibilities is not true for you then you will lose the amount you played.</li>
+                        </ul>
+                    </li>
+                    <li>Click PLAY.</li>
+                    <li>You have to wait for 30 seconds for the results.</li>
+                    <li>WARNING- Don't go back before the results are shown otherwise you won't get your reward if you win.</li>
+                </ul>
+                <hr color="#fff">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12 m-auto">
+            <div class="card card-body text-center">
+                <div style="display: flex;justify-content: center;">
+                    <h4 id="cd" class="mt-2" style="padding-left: 15px; padding-right: 15px;border: 2px solid #fff;border-radius: 5px;">00:00</h4>
+                    <h4 class="mt-2" style="padding-left: 15px; padding-right: 15px;">
+                        <button class="btn btn-secondary btn-block" onclick="rulie()">Instructions</button>
+                    </h4>
+                </div>
+                <h2 id="result" class="mt-3">Card Sweep</h2>
+
+                <h1 class="mt-4">
+                    <img src="/assets/img/card_back.svg" style="height: 151.5px;width: 104.5px;">
+                </h1>
+
+                <h1 class="mt-4">
+                    <img src="/assets/img/card_back.svg" style="height: 151.5px;width: 104.5px;">
+                    <img src="/assets/img/card_back.svg" style="height: 151.5px;width: 104.5px;">
+                </h1>
+
+                <div style="display: flex;justify-content: center;">
+                    <h3 class="mt-2" style="padding-left: 15px; padding-right: 15px;">Left</h3>
+                    <h3 class="mt-2" style="padding-left: 15px; padding-right: 15px;">Right</h3>
+                </div>
+
+                <input type="hidden" id="inp1" value="">
+                <input type="hidden" id="inp2" value="">
+
+                <div id="gayab">
+                    <button onclick="show()" class="btn btn-primary btn-block">START</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12 m-auto">
+            <div class="card card-body text-center">
+                <div id="hide" style="display: none;">
+                    <form id="ismForm" action="/auth/card/<%= id %>" method="POST">
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" id="amount" name="amount" class="form-control" placeholder="Enter Amount"
+                                value="<%= typeof amount != 'undefined' ? amount : '' %>" onkeyup="if(this.value.length < 0 || this.value<10) document.getElementById('start').disabled = true; else document.getElementById('start').disabled = false; document.getElementById('start').style.background = '#00bc8c';" required/>
+                        </div>
+                        <input type="hidden" id="wow" name="wow" value="">
+                        <input type="hidden" id="choice" name="choice" value="">
+                        <input type="hidden" id="today" name="today" value="">
+                    </form>
+
+                    <div class="btn-group">
+                        <div style="padding-left: 10px; padding-right: 10px;">
+                            <button onclick="burr1()" class="btn btn-secondary btn-block mb-2">Left</button>
+                        </div>
+                        <div style="padding-left: 10px; padding-right: 10px;">
+                            <button onclick="burr2()" class="btn btn-secondary btn-block mb-2">Tie</button>
+                        </div>
+                        <div style="padding-left: 10px; padding-right: 10px;">
+                            <button onclick="burr3()" class="btn btn-secondary btn-block mb-2">Right</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for=""></label>
+                        <button id="start" class="btn btn-primary btn-block" disabled>PLAY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function rulie() {
+        if (document.getElementById("rules").style.display == "none") {
+            document.getElementById("rules").style.display = "block";
+        } else {
+            document.getElementById("rules").style.display = "none";
+        }  
+    }
+    
+    function rulix() {
+        document.getElementById("rules").style.display = "none";
+    }
+</script>
+
+<script>
+    function burr1() {
+        const burrr1 = document.getElementById("choice");
+        burrr1.value=1
+    }
+    function burr2() {
+        const burrr2 = document.getElementById("choice");
+        burrr2.value=2
+    }
+    function burr3() {
+        const burrr3 = document.getElementById("choice");
+        burrr3.value=3
+    }
+</script>
+<script>
+    function show() {
+        const hd = document.getElementById("hide");
+        hd.style.display = "block";
+    }
+</script>
+<script>
+    function formSubmit(){
+          document.getElementById("ismForm").submit();
+    }
+
+    let h2 = document.querySelector("#top")
+    let inp1 = document.getElementById("inp1")
+    let inp2 = document.getElementById("inp2")
+
+    function bla() {
+        const kk = Math.floor(Math.random()*40)+1;
+        const pp = "/assets/img/" + kk + ".svg";
+        inp1.value = kk; 
+        document.querySelectorAll("img")[0].setAttribute('src', pp);
+    }
+
+    function grn(min, max){
+        let s1 = max-min +1;
+        let s2 = Math.random()* s1;
+        let r = Math.floor(s2)+min;
+        return r;
+    }
+
+    function can(start, end){
+        let a= [];
+        for(let i=start;i<=end;i++){
+            a.push(i)
+        }
+
+        return a;
+    }
+    let na = can(1,30);
+    var count = 0;
+    var time =30;
+
+    document.getElementById("start").addEventListener("click", () => {
+        const hd = document.getElementById("hide");
+        hd.style.display = "none";
+
+        const hr = document.getElementById("gayab");
+        hr.style.display = "none";
+        
+        const today = new Date();
+        document.getElementById("today").value = today;
+
+        var x=setInterval( function () {
+            time = time<10 ? '0' + time:time;
+            document.getElementById("cd").innerHTML=`00:${time}`;
+            time--;
+            count++;
+            let ri = grn(0,na.length-1);
+            let rn = na[ri];
+            na.splice(ri,1);
+            var fdi = "/assets/img/" + rn + ".svg"
+            inp2.value = rn;
+            if(na.length == 0){
+                document.querySelectorAll("img")[1].setAttribute('src', "/assets/img/card_back.svg");
+                document.querySelectorAll("img")[2].setAttribute('src', "/assets/img/card_back.svg");
+                document.getElementById("result").innerHTML = "Match Not Found"
+                const wow = document.getElementById("wow");
+                wow.value=2
+                clearInterval(x);
+                setTimeout(formSubmit, 2000)
+            } else if(count%2==0) {
+                document.querySelectorAll("img")[1].setAttribute('src', fdi);
+                if(inp1.value==inp2.value) {
+                    document.getElementById("result").innerHTML = "Match Found Left";
+                    const wow = document.getElementById("wow");
+                    wow.value=1
+                    clearInterval(x);
+                    setTimeout(formSubmit, 2000)
+                } else if(inp1.value!=inp2.value) {
+                    document.getElementById("result").innerHTML = "Searching For Match";
+                }
+            } else if(count%2!=0) {
+                document.querySelectorAll("img")[2].setAttribute('src', fdi);
+                if(inp1.value==inp2.value) {
+                    document.getElementById("result").innerHTML = "Match Found Right";
+                    const wow = document.getElementById("wow");
+                    wow.value=3
+                    setTimeout(formSubmit, 2000)
+                    clearInterval(x);
+                } else if(inp1.value!=inp2.value) {
+                    document.getElementById("result").innerHTML = "Searching For Match";
+                }
+            }
+        }, 1000); 
+    })  
+</script>

@@ -1,0 +1,59 @@
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <h3 class="mt-2">Financial Records</h3>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="btn btn-secondary btn-block mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Recharge
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <hr color="#fff">
+                        <div id="acc1" class="accordion-body">
+                            <%= recharge %>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="btn btn-secondary btn-block mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Withdraw
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <hr color="#fff">
+                        <div id="acc2" class="accordion-body">
+                            <%= withdraw %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var allTheData1 = document.querySelector("#acc1").textContent.trim().split(',')
+    var allTheData2 = document.querySelector("#acc2").textContent.trim().split(',')
+    var separateList1 = '<div>'
+    var separateList2 = '<div>'
+    allTheData1.forEach(function(value) {
+        separateList1 += '<div>' + value + '</div>' + '<hr color="#fff">';
+    });
+    allTheData2.forEach(function(value) {
+        separateList2 += '<div>' + value + '</div>' + '<hr color="#fff">';
+    });
+    separateList1 += '</div>';
+    separateList2 += '</div>';
+    document.querySelector("#acc1").innerHTML = separateList1;
+    document.querySelector("#acc2").innerHTML = separateList2;
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>

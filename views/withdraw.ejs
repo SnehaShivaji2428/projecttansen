@@ -1,0 +1,93 @@
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <h3 class="mt-2">Withdraw</h3>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <p class="lead mb-3">Balance: ₹ <%= balance %></p>
+            <p class="lead mb-3">ID: <%= id %></p>  
+            <div>
+                <label for=""></label>
+                <button id="order-button1" class="btn btn-primary btn-block" onclick="rulie()">Instructions</button>
+            </div>     
+        </div>
+    </div>
+</div>
+
+<div id="rules" class="row mt-5" style="display: none;">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <div style="display: flex;justify-content: center;">
+                <h4 class="mt-2">Instructions</h4>
+                <h4 class="mt-2" style="padding-left: 15px; padding-right: 15px;">
+                    <button class="btn btn-secondary btn-block" onclick="rulix()">Close</button>
+                </h4>
+            </div>
+            <hr color="#fff">
+            <ul style="text-align: left;">
+                <li>If you haven't updated your UPI details then update it first in the WITHDRAW DETAILS section.</li>
+                <li>If you have already updated your UPI details then you will be able to see the details in the WITHDRAW DETAILS section.</li>
+                <li>Enter valid and authenticate details only otherwise Withdrawal won't be successful.</li>
+                <li>If you want to change your UPI details you can again go for anther update and save it.</li>
+                <li>
+                    Then you can enter the amount you want to withdraw.
+                    <ul>
+                        <li>You cannot withdraw more than your balance.</li>
+                        <li>You cannot withdraw less than ₹200.</li>
+                    </ul>
+                </li>
+                <li>Click REQUEST WITHDRAWAL.</li>
+                <li>If your UPI details are authenticate then within 24 hours you will recieve your withdrawal amount.</li>
+            </ul>
+            <hr color="#fff">
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <h4 class="mt-2">Withdraw Details</h4>
+            <hr color="#fff">
+            <p class="lead mb-3">Name: <%= name %></p>
+            <p class="lead mb-3">UPI: <%= upi %></p>  
+            <p class="lead mb-3">WhatsApp: <%= num %></p> 
+            <hr color="#fff"> 
+            <div>
+                <a href="/manual" class="btn btn-primary btn-block">Update UPI Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <form action="/auth/contact4" method="POST">
+                <div class="form-group">
+                    <label for="">Amount: </label>
+                    <input type="number" id="amount" name="amount" autocomplete="off" class="form-control" placeholder="Enter Amount">
+                </div>
+                <button id="order-button1" class="btn btn-primary btn-block">Request Withdrawal</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function rulie() {
+        if (document.getElementById("rules").style.display == "none") {
+            document.getElementById("rules").style.display = "block";
+        } else {
+            document.getElementById("rules").style.display = "none";
+        }  
+    }
+
+    function rulix() {
+        document.getElementById("rules").style.display = "none";
+    }
+</script>

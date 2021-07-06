@@ -1,0 +1,85 @@
+<%- include ("./nav") %>
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <h3 class="mt-2">Recharge</h3>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <p class="lead mb-3">Balance: ₹ <%= balance %></p>
+            <p class="lead mb-3">ID: <%= id %></p>    
+            <div>
+                <label for=""></label>
+                <button id="order-button1" class="btn btn-primary btn-block" onclick="rulie()">Instructions</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="rules" class="row mt-5" style="display: none;">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <div style="display: flex;justify-content: center;">
+                <h4 class="mt-2">Instructions</h4>
+                <h4 class="mt-2" style="padding-left: 15px; padding-right: 15px;">
+                    <button class="btn btn-secondary btn-block" onclick="rulix()">Close</button>
+                </h4>
+            </div>
+            <hr color="#fff">
+            <ul style="text-align: left;">
+                <li>
+                    Enter your recharge amount.
+                    <ul>
+                        <li>You can't recharge less then ₹30.</li>
+                        <li>If recharge amount is more than ₹1000 than 10% of your recharge amount will be rewards as bonus.</li>
+                    </ul>
+                </li>
+                <li>Click CREATE ORDER.</li>
+                <li>Now you will be redirected to PAYMENT SECTION.</li>
+                <li>WARNING- Don't edit or change anything in the ORDER ID field (Meant to be auto filled).</li>
+                <li>Click CHECKOUT.</li>
+                <li>Enter your phone number and email.</li>
+                <li>Enter your bank details.</li>
+                <li>Click PAY.</li>
+                <li>WARNING- Don't edit or change anything in the ORDER ID, PAYMENT ID, ORDER SIGNATURE field (Meant to be auto filled).</li>
+                <li>Click VERIFY.</li>
+                <li>If everything goes well then a success message will be displayed.</li>
+                <li>Click GO BACK to return to the previous page.</li>
+                <li>If any error message shows up then conatct owner.</li>
+            </ul>
+            <hr color="#fff">
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12 m-auto">
+        <div class="card card-body text-center">
+            <form action="/auth/order1" method="POST">
+                <div class="form-group">
+                    <label for="">Amount: </label>
+                    <input type="text" id="order-amt" name="amt" class="form-control" placeholder="Enter Amount">
+                </div>
+                <button id="order-button1" class="btn btn-primary btn-block">Create Order</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function rulie() {
+        if (document.getElementById("rules").style.display == "none") {
+            document.getElementById("rules").style.display = "block";
+        } else {
+            document.getElementById("rules").style.display = "none";
+        }  
+    }
+
+    function rulix() {
+        document.getElementById("rules").style.display = "none";
+    }
+</script>

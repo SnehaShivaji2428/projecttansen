@@ -1,0 +1,25 @@
+<%- include ("./nav") %>
+<div>
+    <%- include ("./messages") %>
+    <div class="row mt-5">
+        <div class="col-md-12 m-auto">
+            <div class="card card-body text-center">
+                <p class="lead mb-3">Username: <%= name %></p>
+                <p class="lead mb-3">Email: <%= email %></p>
+                <p class="lead mb-3">ID: <%= id %></p>
+                <a href="/update" class="btn btn-primary btn-block">Edit</a>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12 m-auto">
+            <div class="card card-body text-center">
+                <a href="/order" class="btn btn-secondary btn-block mb-2">Order Details</a>
+                <a href="/finance" class="btn btn-secondary btn-block mb-2">Financial Records</a>
+                <a href="https://t.me/joinchat/zhYK4iBF9wU2NzRl/@Tansen_Games_bot" target="_blank" class="btn btn-secondary btn-block mb-2">Support</a>
+                <a href="https://t.me/joinchat/zhYK4iBF9wU2NzRl" target="_blank" class="btn btn-secondary btn-block mb-2">Follow Us</a>
+                <a href="/auth/logout" class="btn btn-primary btn-block">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body text-center">
+            <h1 class="mb-3">Change Username</h1>
+            <%- include ("./messages") %>
+            <form action="/auth/editt/<%= id %>" method="POST">
+                <div class="form-group">
+                    <label for="name">New Username</label>
+                    <input type="name" id="name" name="name" class="form-control" placeholder="Enter New Username"
+                      value="<%= typeof name != 'undefined' ? name : '' %>" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
