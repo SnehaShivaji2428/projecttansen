@@ -964,7 +964,7 @@ exports.contact4 = (req, res) => {
         service: 'gmail',
         auth: {
             user: "tansengames7@gmail.com",  
-            pass: "Tansen2021"  
+            pass: process.env.PASS  
         },
     });
     
